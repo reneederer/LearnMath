@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, tikz}
+\usepackage[colorlinks,linkcolor=blue]{hyperref} % for bookmarks and links
+
+\begin{document}
+\section{Statistics}
+\subsection{CDF}
+\begin{enumerate}
+  \item right-continuous
+  \item monotonically increasing
+  \item
+    \(
+      \lim_{x \to \infty} F(x) = 1
+    \)
+\end{enumerate}
+
+\subsection{PDF/PMF}
+And so does this.
+
+  \subsection{Quantiles}
+  Quantiles split data into equal parts.
+
+\begin{tikzpicture}[scale=5]
+
+  % Axes
+  \draw[->] (0,0) -- (1.1,0) node[below right] {$x$};
+  \draw[->] (0,0) -- (0,1.1) node[above left] {$F(x)$};
+
+  % Step CDF
+  \draw[thick] (0.1,0) -- (0.3,0)
+               -- (0.3,0.3) -- (0.5,0.3)
+               -- (0.5,0.7) -- (0.7,0.7)
+               -- (0.7,0.9) -- (0.9,0.9);
+
+  % Probability level
+  \def\p{0.5}
+  \draw[dashed] (0,\p) -- (1,\p);
+  \node[left] at (0,\p) {$p$};
+
+  % Vertical dashed lines at Q^- and Q^+
+  \draw[dashed,red] (0.3,0) -- (0.3,\p);
+  \draw[dashed,red] (0.5,0) -- (0.5,\p);
+
+  % Points at Q^- and Q^+
+  \filldraw[red] (0.3,\p) circle (0.4pt);
+  \filldraw[red] (0.5,\p) circle (0.4pt);
+
+  % Labels
+  \node[below] at (0.3,0) {$Q^-(p)$};
+  \node[below] at (0.5,0) {$Q^+(p)$};
+
+  % Annotate F(x) jump
+  \draw[<->] (0.5,0.3) -- (0.5,0.7);
+  \node[right] at (0.5,0.5) {\footnotesize jump};
+
+  % Optional: mark F(Q^-) and F(Q^+)
+  \node[left] at (0,0.3) {$F(Q^-(p))$};
+  \node[left] at (0,0.7) {$F(Q^+(p))$};
+
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Gauss test / z-test}
+  \subsubsection{H0}
+  Claim that we want to find evidence against.
+  \newline
+  Type I error: Rejecting H0, although H0 is actually true
+  \newline
+  \(\alpha\): Probability of type I error, usually chosen before the test, often at 0.05
+  \subsubsection{H1}
+  Claim that we want to find evidence for.
+  Type II error: Fail to reject H0, although H0 is actually false, i.e. missing a true effect
+  $\beta$: Probability of type II error, missing a real effect
+  \subsubsection{Power function \texorpdfstring{$G(\mu)$}{G (mu)}}
+
+  Power G(\(\mu\)): \(1-\beta\)
+  \newline
+  Probability of correctly rejecting \(H_0\) when \(H_1\) is true
+  $\mathbb{P}(Reject H_0 | H_1 true) + \mathbb{P}(Fail to reject H_0 | H_1 true) = 1$
+
+  \begin{itemize}
+    \item Power tells you: ''If there really is an effect, how likely am I to find it?''
+    \item $\beta$ tells you: ''If there really is an effect, how likely am I to miss it?''
+  \end{itemize}
+
+  \subsubsection{H2 / H3}
+
+\subsection{t-test}
+\subsection{p-value}
+
+Some text or math here.
+
+\end{document}
